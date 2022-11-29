@@ -1,0 +1,16 @@
+redis:
+    listen: 0.0.0.0:6390
+    hash: fnv1a_64
+    distribution: ketama
+    hash_tag: '{}'
+    redis: true
+    backlog: 65536
+    auto_eject_hosts: true
+    server_retry_timeout: 60000
+    server_failure_limit: 1
+    timeout: 400
+    preconnect: true
+    servers:
+    - redis1:6379:1 server1
+    - redis2:6379:1 server2
+    - redis3:6379:1 server3

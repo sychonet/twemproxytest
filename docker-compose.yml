@@ -1,0 +1,53 @@
+version: "3.9"
+services:
+  twemproxy:
+    tty: true
+    build:
+      context: ./twemproxy
+      dockerfile: ./Dockerfile
+    container_name: "twemproxy"  
+    ports:
+      - "6390:6390"
+  redis1:
+    image: "redis:latest"
+    container_name: "redis1"
+  redis2:
+    image: "redis:latest"
+    container_name: "redis2"
+  redis3:
+    image: "redis:latest"
+    container_name: "redis3"
+  prometheus:
+    image: "prom/prometheus:latest"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./data/prometheus/data:/prometheus
+    container_name: "prometheus"
+    ports:
+      - "9090:9090"
+  grafana:
+    image: "grafana/grafana-oss:latest"
+    container_name: "grafana"
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SMTP_ENABLED=false
+    ports:
+      - "3000:3000"
+  redis_exporter:
+    image: "oliver006/redis_exporter:latest"
+    container_name: "redis_exporter"
+  twemproxy_exporter:
+    platform: linux/x86_64
+    tty: true
+    build:
+      context: ./twemproxy_exporter
+      dockerfile: ./Dockerfile
+    container_name: "twemproxy_exporter"  
+    ports:
+      - "9151:9151"
+networks:
+  default:
+    name: twemproxytest
