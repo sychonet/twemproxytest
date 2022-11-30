@@ -12,7 +12,7 @@
 
 1. Publish dashboard for monitoring twemproxy metrics on Grafana.
 2. Add support for monitoring container metrics on Grafana.
-3. Automate setup for Grafana as right now it requires a lot of manual steps to add prometheus as data source and add dashboard in it.
+3. Automate setup for Grafana as right now it requires a lot of manual steps to add prometheus as data source and add dashboard in it. If it can't be automated then steps will be added in this document on how to create the dashboards manually.
 
 ## Steps to run the project
 
