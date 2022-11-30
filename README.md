@@ -7,12 +7,14 @@
 4. 1 container of [Prometheus](https://prometheus.io/)
 5. 1 container of [Grafana](https://grafana.com/) 
 6. 1 container of [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) This service is used for load testing and benchmarking of twemproxy.
+7. 1 container of [redis_exporter](https://github.com/oliver006/redis_exporter) for exporting redis metrics to prometheus.
 
 ## Work in progress
 
 1. Publish dashboard for monitoring twemproxy metrics on Grafana.
 2. Add support for monitoring container metrics on Grafana.
 3. Automate setup for Grafana as right now it requires a lot of manual steps to add prometheus as data source and add dashboard in it. If it can't be automated then steps will be added in this document on how to create the dashboards manually.
+4. Even though the redis exporter is exporting metrics to prometheus still an error message is appearing in logs as `time="2022-11-30T05:38:48Z" level=error msg="Couldn't connect to redis instance (redis://localhost:6379)"`. This need to be checked and fixed.
 
 ## Steps to run the project
 
