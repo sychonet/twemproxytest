@@ -22,5 +22,6 @@
 2. Clone repository on your local machine.
 3. Run command `docker-compose up` from the root directory of project.
 4. Once all the containers are up then check on prometheus console at `http://localhost:9090` if the targets are working fine.
-5. Do benchmarking and run load tests on your setup using following command. Please change the values for command line arguments based on your requirements.
+5. In case you want to use Grafana for monitoring Redis then first add Prometheus as data source and use dashboard in [link](https://grafana.com/grafana/dashboards/11835-redis-dashboard-for-prometheus-redis-exporter-helm-stable-redis-ha/)
+6. Do benchmarking and run load tests on your setup using following command. Please change the values for command line arguments based on your requirements.
 `docker run --rm --network=twemproxytest redislabs/memtier_benchmark:latest --server=twemproxy --port=6390 --protocol=redis --run-count=2 --show-config --requests=5000 --clients=50 --threads=4 --test-time=60 --ratio=1:1 --reconnect-interval=1000 --data-size-range=100-1024 --random-data --expiry-range=5-10 --key-prefix=memtier-benchmark- --key-minimum=0 --key-maximum=100000000 --print-percentiles=95,99,99.9` 
